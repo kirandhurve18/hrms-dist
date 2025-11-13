@@ -44,8 +44,8 @@ ufw reload
 
 
 # for backend server setup :
- Install node , npm , nginx , 
-Go to the cd backend 
+ Install node , npm , nginx ,  
+Go to the cd backend
 npm install
 node index.js 
 npm install -g pm2 
