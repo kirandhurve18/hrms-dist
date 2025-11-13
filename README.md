@@ -41,3 +41,15 @@ ufw reload
 ufw enable 
 ufw allow 'Nginx Full'
 ufw reload 
+
+
+# for backend server setup :
+ Install node , npm , nginx , 
+Go to the cd backend 
+npm install
+node index.js 
+npm install -g pm2 
+pm2 start server.js --name hrms-backend
+pm2 startup systemd 
+
+
