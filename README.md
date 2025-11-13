@@ -1,10 +1,10 @@
 ## First install instance  : allow port like 80 for frontend :
-````
 # install MONGODB from link 
-````
+
 ````
 https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
 ````
+
 ````
 sudo apt-get install gnupg curl
 curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | \
