@@ -89,3 +89,6 @@ pm2 start server.js --name hrms-backend
 pm2 startup systemd 
 pm2 list 
 
+NOTE : AFTER CHNAGING ANY FILE IN THE BACKEND YOU NEED TO RESTART THE INDEX.JS 
+       FOR THE RUN COMMAND (Pm2 restart all )
+       Check with -- pm2 list 
