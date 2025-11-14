@@ -94,6 +94,7 @@ NOTE : AFTER CHNAGING ANY FILE IN THE BACKEND YOU NEED TO RESTART THE INDEX.JS
        Check with -- pm2 list 
 
 
+
 ####  Docker setup for the server (backend)
 
 Set up Docker's apt repository.
@@ -117,13 +118,7 @@ EOF
 
 sudo apt update
 ````
-# To install the latest version, run:
 
-Install node 
-````
-node -v 
-npm -v
-````
 ````
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ````
@@ -133,7 +128,51 @@ sudo systemctl status docker
 ````
 sudo systemctl start docker
 ````
+# To install the latest version, run:
+
+Install npm
+
+````
+apt update
+apt install npm -y
+npm install
+````
+````
+install pm2 for daemon service running on server
+````
+````
+npm install -g pm2
+````
+````
+pm2 start server.js --name grocery-backend
+````
+````
+pm2 save
+````
+````
+pm2 startup
+````
+````
+pm2 list
+````
+````
+node -v 
+npm -v
+````
+# Install Docker on server for docker file 
+
 GO TO THE BACKEND FOLDER 
+
+COMMAND TO BUILD DOCKER IMAGE 
+
 ````
 docker build -t hrms-backend .
 ````
+````
+docker run -d --name <container-name> -p 3005:3005 <docker-image-name>
+````
+COMMAND TO RUN CONTAINER
+````
+docker run -d --name hrms-second -p 3005:3005 hrms-backens
+````
+
