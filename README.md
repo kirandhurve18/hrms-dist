@@ -203,3 +203,7 @@ EXPOSE 3000
 # 7. Start the backend
 CMD ["pm2-runtime", "index.js"]
 ````
+NOTE : Getting error find check logs 
+````
+docker logs <container name>
+````
