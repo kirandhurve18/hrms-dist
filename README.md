@@ -207,3 +207,73 @@ NOTE : Getting error find check logs
 ````
 docker logs <container name>
 ````
+
+# Deployment of Frontend through the docker 
+
+Install Docker 
+
+install Node 
+
+Write Dockerfile 
+
+````
+ -------------------------------------------------------
+# Step 1 — Build Angular App
+# -------------------------------------------------------
+FROM node:20 AS build
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+# Build Angular app (production)
+RUN npm run build
+
+# -------------------------------------------------------
+# Step 2 — Nginx to Serve Angular
+# -------------------------------------------------------
+FROM nginx:alpine
+
+# Remove default config
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Add custom nginx config
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+RUN rm -rf /usr/share/nginx/html/*
+# Copy ALL files from dist folder to Nginx
+# (works for any dist/<project-name>/ structure)
+COPY --from=build  /app/dist/HRMS4/browser/ /usr/share/nginx/html/
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
+````
+#IMP NOTE# IF YOU ARE BUILDING THE Nginx container then you will not able build stage 
+for that you have to first build  image for build stage , enter it and copy the exact path of the dist . 
+After that you have run again the image nd container for the nginx conatiner .
+
+
+# Run the build stage container:
+
+````
+docker build -t myfrontend --target build .
+docker run -it --entrypoint sh myfrontend
+````
+#### From here you can see the /app working directory in the conatiner.
+#### Now you are inside the build (Node) container.
+#### you will see all the directory copy to the container 
+
+# After that again you need to create docker image 
+
+````
+docker build -t onerwo .
+````
+````
+docker run -d --name container -p 80:80 onerwo
+````
+IT will Successfully run the container .
+
