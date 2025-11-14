@@ -119,7 +119,19 @@ sudo apt update
 ````
 # To install the latest version, run:
 
-Install node 
+Install npm 
+````
+apt update
+apt install npm -y
+npm install
+````
+install pm2 for daemon service running on server
+````
+npm install -g pm2
+````
+````
+pm2 start index.js --name hrms-backend
+````
 ````
 node -v 
 npm -v
