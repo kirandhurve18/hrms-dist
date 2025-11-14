@@ -118,6 +118,12 @@ EOF
 sudo apt update
 ````
 # To install the latest version, run:
+
+Install node 
+````
+node -v 
+npm -v
+````
 ````
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ````
