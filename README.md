@@ -1,4 +1,7 @@
-## First install instance  : allow port like 80 for frontend :
+### First install instance  : allow port like 80 for frontend :
+
+# SETUP DATABASE:
+
 # install MONGODB from link 
 
 ````
@@ -40,7 +43,12 @@ dist will created : copy the path of the dist made
 copy that path to the /var/www/html/
 cp -r /home/ubuntu/hrms-dist/dist/hrms/* /var/www/html/
 
-vim /etc/nginx/site-available/default 
+NOTE : IF YOU MADE ANY CHANGES IN THE FILES YOU AGAIN NEED TO RUN THE COMMAND FOR BUILD (npm build run) paste the dist in the /var/www/html/ , 
+      restart the nginx .
+
+
+# vim /etc/nginx/site-available/default
+
 ````
 server {
     listen 80;
@@ -57,7 +65,9 @@ server {
     error_log  /var/log/nginx/angular_error.log;
 }
 ````
+
 After editing servre configuration file :
+
 nginx -t 
 systemctl restart nginx
 
@@ -69,12 +79,13 @@ ufw reload
 
 
 # for backend server setup :
- Install node , npm , nginx ,  
+
+Install node , npm , nginx ,  
 Go to the cd backend
 npm install
 node index.js 
 npm install -g pm2 
 pm2 start server.js --name hrms-backend
 pm2 startup systemd 
-
+pm2 list 
 
